@@ -26,7 +26,7 @@ def scrape_data_point():
 
     if req.ok:
         soup = bs4.BeautifulSoup(req.text, "html.parser")
-        target_element = soup.find("div", class_="row section-etc hidden-sm hidden-xs").find("img", class_="img img-responsive")
+        target_element = soup.find("div", class_="row section-etc hidden-sm hidden-xs").find("div", class_="col-md-8")
         data_point = "" if target_element is None else target_element.text
         loguru.logger.info(f"Data point: {data_point}")
         return data_point
