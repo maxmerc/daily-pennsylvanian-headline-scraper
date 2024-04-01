@@ -13,9 +13,9 @@ This template includes a sample workflow to demonstrate the core git scraping ca
 ## How the Scraper was Modified
 1. Using the *select an element in the page to inspect it tool (ctrl+shift+c)* I found out where in the HTML code the latest print issue lived.
 2. Once finding that out, I modified the target_element to the following: target_element = soup.find("div", class_="row section-etc hidden-sm hidden-xs").find("div", class_="col-sm-4 section-issues").find("div", class_="col-xs-6 current-issue").a
-   *Note originally it was: target_element = soup.find("a", class_="frontpage-link"), by modifying the find to this we are able to correctly find the link for the latest print issue.
+    *Note originally it was: target_element = soup.find("a", class_="frontpage-link"), by modifying the find to this we are able to correctly find the link for the latest print issue.
 3. Since the latest print issue doesn't have any text but rather a responsive image, I modified the data_point to the following: data_point = "" if target_element is None else target_element['href']
-   *Note originally it was: data_point = "" if target_element is None else target_element.text. By changing it from .text to ['href'], we are no longer grabbing the text inside the hyperlink tag but instead grabbing the link url itself.
+    *Note originally it was: data_point = "" if target_element is None else target_element.text. By changing it from .text to ['href'], we are no longer grabbing the text inside the hyperlink tag but instead grabbing the link url itself.
 By doing these steps I was able to modify the original web scraper that grabbed the front headline to now instead grab the link the latest print issue. 
 
 ## Overview
