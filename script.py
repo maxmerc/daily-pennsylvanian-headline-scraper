@@ -26,7 +26,7 @@ def scrape_data_point():
 
     if req.ok:
         soup = bs4.BeautifulSoup(req.text, "html.parser")
-        target_element = soup.find("div", class_="row section-etc hidden-sm hidden-xs").find("div", class_="col-sm-4 section-issues").find("div", class_="col-xs-6 current-issue").a
+        target_element = soup.find("div", class_="row section-etc hidden-sm hidden-xs").find("div", class_="col-sm-4 section-issues").find("div", class_="col-xs-6 current-issue").a.href
         data_point = "" if target_element is None else target_element.text
         loguru.logger.info(f"Data point: {data_point}")
         return data_point
